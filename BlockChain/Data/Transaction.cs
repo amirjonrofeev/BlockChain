@@ -1,4 +1,4 @@
-﻿namespace BlockChains.Data
+﻿namespace BlockChains
 {
     public class Transaction
     {

@@ -1,5 +1,4 @@
 ﻿using System;
-using BlockChains.Data;
 
 //Amir Rofeev
 namespace BlockChains
@@ -8,7 +7,6 @@ namespace BlockChains
     {
         internal static void Main()
         {
-
             BlockChain blockChain = new BlockChain();
 
             blockChain.CreateTransaction(new Transaction("Address2", "Address1", 75));

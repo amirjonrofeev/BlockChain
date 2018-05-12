@@ -3,7 +3,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Collections.Generic;
 
-namespace BlockChains.Data
+namespace BlockChains
 {
     public class Block
     {

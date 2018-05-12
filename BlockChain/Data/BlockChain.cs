@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BlockChains.Data
+namespace BlockChains
 {
     public class BlockChain
     {
         //Chain of blocks
         public IList<Block> Chain { get; set; }
+
+        //Lastest in blockchain.
+        public Block GetLastestBlock { get { return Chain[Chain.Count - 1]; } }
 
         //Block- transactions
         public IList<Transaction> PendingTransactions { get; set; }
@@ -30,22 +33,16 @@ namespace BlockChains.Data
         }
 
         //Constructor
-        public Block CreateGenesisBlock()
+        private Block CreateGenesisBlock()
         {
             return new Block(DateTime.Now, new List<Transaction>(), "0000");
-        }
-
-        //Lastest in blockchain.
-        public Block GetLastestBlock()
-        {
-            return Chain[Chain.Count - 1];
         }
 
         //Mining of block
         public void MinePendingTransactions(string miningRewardAddress)
         {
-            var block = new Block(DateTime.Now, PendingTransactions, GetLastestBlock().CurrentHash);
-            block.MineBlock(Diffuclty); 
+            Block block = new Block(DateTime.Now, PendingTransactions, GetLastestBlock.CurrentHash);
+            block.MineBlock(Diffuclty);
 
             Console.WriteLine("Block successfully mined!");
             Chain.Add(block);
@@ -77,9 +74,16 @@ namespace BlockChains.Data
         }
 
         //CreateTransaction
-        public void CreateTransaction(Transaction transaction)
+        public bool CreateTransaction(Transaction transaction)
         {
-            PendingTransactions.Add(transaction);
+            if (transaction != null)
+            {
+                PendingTransactions.Add(transaction);
+                return true;
+            }
+            else
+                return false;
+
         }
 
         //IsChainValid
