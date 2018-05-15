@@ -45,6 +45,7 @@
     <Compile Include="Data\Block.cs" />
     <Compile Include="Data\BlockChain.cs" />
     <Compile Include="Data\Transaction.cs" />
+    <Compile Include="Data\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

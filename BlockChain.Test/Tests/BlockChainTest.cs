@@ -91,7 +91,7 @@ namespace BlockChains.Test
             blockChain.MinePendingTransactions(address1);
             blockChain.MinePendingTransactions(address2);
 
-            blockChain.Chain[1].CurrentHash = "WrongHashHackerchangedhash";
+            blockChain.Blocks[1].CurrentHash = "WrongHashHackerchangedhash";
 
             Assert.IsFalse(blockChain.IsChainValid());
 
@@ -111,7 +111,7 @@ namespace BlockChains.Test
             blockChain.MinePendingTransactions(address1);
             blockChain.MinePendingTransactions(address2);
 
-            blockChain.Chain[1].PreviousHash = "WrongHashHackerchangedhash";
+            blockChain.Blocks[1].PreviousHash = "WrongHashHackerchangedhash";
 
             Assert.IsFalse(blockChain.IsChainValid());
 

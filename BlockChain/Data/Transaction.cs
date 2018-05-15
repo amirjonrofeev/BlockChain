@@ -2,14 +2,14 @@
 {
     public class Transaction
     {
-        public int Amount { get; set; }
-        public string FromAddress { get; set; }
-        public string ToAddress { get; set; }
+        public double Amount { get; set; }
+        public string FromUser { get; set; }
+        public string ToUser { get; set; }
 
-        public Transaction(string fromAddress, string toAdress, int amount)
+        public Transaction(User fromUser, User toUser, double amount)
         {
-            FromAddress = fromAddress;
-            ToAddress = toAdress;
+            FromUser = fromUser == null ? " " : fromUser.Name;
+            ToUser = toUser.Name;
             Amount = amount;
         }
     }

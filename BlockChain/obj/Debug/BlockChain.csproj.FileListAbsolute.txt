@@ -5,3 +5,10 @@ C:\Users\Amir\Desktop\BlockChain\BlockChain\obj\Debug\BlockChain.csprojResolveAs
 C:\Users\Amir\Desktop\BlockChain\BlockChain\obj\Debug\BlockChain.csproj.CoreCompileInputs.cache
 C:\Users\Amir\Desktop\BlockChain\BlockChain\obj\Debug\BlockChain.exe
 C:\Users\Amir\Desktop\BlockChain\BlockChain\obj\Debug\BlockChain.pdb
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\bin\Debug\BlockChain.exe.config
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\bin\Debug\BlockChain.exe
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\bin\Debug\BlockChain.pdb
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\obj\Debug\BlockChain.csprojResolveAssemblyReference.cache
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\obj\Debug\BlockChain.csproj.CoreCompileInputs.cache
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\obj\Debug\BlockChain.exe
+D:\Мои проекты\Solutions\BlockChainProjects\BlockChain\BlockChain\obj\Debug\BlockChain.pdb

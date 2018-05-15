@@ -5,65 +5,60 @@ namespace BlockChains
 {
     public class BlockChain
     {
-        //Chain of blocks
-        public IList<Block> Chain { get; set; }
-
-        //Lastest in blockchain.
-        public Block GetLastestBlock { get { return Chain[Chain.Count - 1]; } }
-
-        //Block- transactions
+        public IList<Block> Blocks { get; set; }
+        public Block GetLastestBlock { get { return Blocks[Blocks.Count - 1]; } }
         public IList<Transaction> PendingTransactions { get; set; }
-
-        //Level of diffuclty of mining. //e.g = (4) 0000.
         public int Diffuclty { get; set; }
-
-        //LastRewardValue
         public int MiningReward { get; set; }
 
-        //Constructor for intialize first/genesis block.
         public BlockChain()
         {
-            Chain = new List<Block>
+            Blocks = new List<Block>
             {
-                CreateGenesisBlock() //FirstOrGenesisBlock
+                CreateGenesisBlock()
             };
-            Diffuclty = 4;
             MiningReward = 100;
+            Diffuclty = 4;
             PendingTransactions = new List<Transaction>();
         }
 
-        //Constructor
         private Block CreateGenesisBlock()
         {
             return new Block(DateTime.Now, new List<Transaction>(), "0000");
         }
 
-        //Mining of block
-        public void MinePendingTransactions(string miningRewardAddress)
+        public void MinePendingTransactions(User miningRewardUser)
         {
+            PendingTransactions.Add(new Transaction(null, miningRewardUser, 150));
+
             Block block = new Block(DateTime.Now, PendingTransactions, GetLastestBlock.CurrentHash);
             block.MineBlock(Diffuclty);
 
             Console.WriteLine("Block successfully mined!");
-            Chain.Add(block);
+            Blocks.Add(block);
 
-            PendingTransactions.Add(new Transaction(null, miningRewardAddress, MiningReward));
+            PendingTransactions= new List<Transaction>();
         }
 
-        //Balance of Address
-        public int GetBalanceOfAddress(string address)
+        public void BuyCoins(User user, double amount)
         {
-            int balance = 0;
+            //Логика для покупки криптовалюты пока что нету обменников(но есть возможность поменять QIWI,WEBMONEY и другии веб - деньги или настоящие деньги на криптовалюту.)
+            PendingTransactions.Add(new Transaction(null, user, amount));
+        }
 
-            foreach (var block in Chain)
+        public double GetBalanceOfAddress(User user)
+        {
+            double balance = 0;
+
+            foreach (var block in Blocks)
             {
                 foreach (var transaction in block.Transactions)
                 {
-                    if (transaction.FromAddress == address)
+                    if (transaction.FromUser == user.Name)
                     {
                         balance -= transaction.Amount;
                     }
-                    if (transaction.ToAddress == address)
+                    if (transaction.ToUser == user.Name)
                     {
                         balance += transaction.Amount;
                     }
@@ -73,7 +68,6 @@ namespace BlockChains
             return balance;
         }
 
-        //CreateTransaction
         public bool CreateTransaction(Transaction transaction)
         {
             if (transaction != null)
@@ -86,13 +80,12 @@ namespace BlockChains
 
         }
 
-        //IsChainValid
         public bool IsChainValid()
         {
-            for (int i = 1; i < Chain.Count; i++)
+            for (int i = 1; i < Blocks.Count; i++)
             {
-                var currentBlock = Chain[i];
-                var previousBlock = Chain[i - 1];
+                var currentBlock = Blocks[i];
+                var previousBlock = Blocks[i - 1];
 
                 if (currentBlock.CurrentHash != currentBlock.CalculateHash())
                     return false;

@@ -7,11 +7,11 @@ namespace BlockChains
 {
     public class Block
     {
-        public int Nonce { get; set; } //Nonce
-        public DateTime DateTime { get; set; } //DateTime
-        public IList<Transaction> Transactions { get; set; } //List of transactions - Block includes transactions.
-        public string PreviousHash { get; set; } //Hash of Previous Block.
-        public string CurrentHash { get; set; } //Hash of Current Block
+        public int Nonce { get; set; } 
+        public DateTime DateTime { get; set; } 
+        public IList<Transaction> Transactions { get; set; } 
+        public string PreviousHash { get; set; }
+        public string CurrentHash { get; set; } 
 
 
         public Block(DateTime dateTime, IList<Transaction> transactions, string previousHash = "")
@@ -35,7 +35,7 @@ namespace BlockChains
                 hashString += String.Format("{0:x2}", x);
             }
 
-            return hashString; //Sha256 - (coding - hashing)  
+            return hashString; 
         }
 
         public void MineBlock(int diffuclty)
@@ -46,7 +46,7 @@ namespace BlockChains
                 CurrentHash = CalculateHash();
             }
 
-            Console.WriteLine("Block mined: " + CurrentHash); //Minening block.
+            Console.WriteLine("Block mined: " + CurrentHash); 
         }
     }
 }
